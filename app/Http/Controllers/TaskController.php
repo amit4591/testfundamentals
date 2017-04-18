@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use Session;
 
 class TaskController extends Controller
 {
@@ -33,6 +34,8 @@ class TaskController extends Controller
         $input = $request->all();
 
         Task::create($input);
+
+        Session::flash('flash_message', 'Task successfully added!');
 
         return redirect()->back();
     }
