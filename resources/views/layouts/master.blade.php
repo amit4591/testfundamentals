@@ -14,8 +14,8 @@
             <a class="navbar-brand" href="#">Tasks</a>
         </div>
         <div class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tasks</a></li>
+            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/alltasks') }}">Tasks</a></li>
         </div>
     </div>
 </nav>

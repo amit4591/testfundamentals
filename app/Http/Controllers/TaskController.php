@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -74,19 +76,33 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-
-        $task = Task::findOrFail($id);
-
-        $task->delete();
-
-        Session::flash('flash_message', 'Task successfully deleted!');
         //die($id);
-        return redirect()->action(
-            'TaskController@index'
-        );
-        //return redirect()->route('alltasks');
+       // $role = new Role();
+        //var_dump($role);die;
+
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        //var_dump($userId);die;
+        //var_dump($user->hasRole('admin'));die;
+        if ( $user->hasRole('admin'))
+        {
+            //var_dump($user->isEmployee()); die();
+            $task = Task::findOrFail($id);
+            //$user = User::findOrFail($user);
+            $task->delete();
+
+            Session::flash('flash_message', 'Task successfully deleted!');
+            //die($id);
+            return redirect()->action(
+                'TaskController@index'
+            );
+            //return redirect()->route('alltasks');
+        }
+        else{
+            die('Not admin privillage');
+        }
 
     }
 
