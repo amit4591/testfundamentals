@@ -3,16 +3,12 @@
 @section('content')
 
     <h1>Editing "{{ $task->title }}"</h1>
-    <p class="lead">Edit and save this task below, or <a href="{{ url('tasks.index') }}">go back to all tasks.</a></p>
+    <p class="lead">Edit and save this task below, or <a href="{{ url('/alltasks') }}">go back to all tasks.</a></p>
     <hr>
 
     @include('partials.alerts.errors')
 
-    @if(Session::has('flash_message'))
-        <div class="alert alert-success">
-            {{ Session::get('flash_message') }}
-        </div>
-    @endif
+
 
     {!! Form::model($task, [
         'method' => 'PATCH',
