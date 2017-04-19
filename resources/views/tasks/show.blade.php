@@ -10,7 +10,7 @@
     <a href="{{ url('edit', $task->id) }}" class="btn btn-primary">Edit Task</a>
 
     <div class="pull-right">
-        <a href="#" class="btn btn-danger">Delete this task</a>
+        <a href="{{ url('delete', $task->id) }}" class="btn btn-danger">Delete this task</a>
     </div>
 
 @stop
