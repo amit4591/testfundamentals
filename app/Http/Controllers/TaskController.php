@@ -48,13 +48,15 @@ class TaskController extends Controller
     }
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
 
+        $task = Task::findOrFail($id);
+        //die($task);
         return view('tasks.edit')->withTask($task);
     }
 
     public function update($id, Request $request)
     {
+        //die($id);
         $task = Task::findOrFail($id);
 
         $this->validate($request, [

@@ -17,5 +17,7 @@ Route::get('/create', 'TaskController@create');
 Route::post('/create', 'TaskController@store');
 Route::get('/tasks/{id}', 'TaskController@show');
 Route::get('tasks', 'TaskController@show');
+Route::get('tasks.index', 'TaskController@index');
+Route::PATCH('edit/{id}', 'TaskController@update');
 Route::get('edit/{id}', 'TaskController@edit');
 //Route::post('/create', 'TaskController@store');
