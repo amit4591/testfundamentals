@@ -13,6 +13,10 @@ class TaskController extends Controller
     public function __construct(TaskService $service)
     {
         $this->tasks=$service;
+
+        //$this->middleware('auth:api');    //everything will be protected
+        $this->middleware('auth:api', ['only'=> ['store','update','destroy']]); //only or except
+
     }
 
     /**
@@ -51,6 +55,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
